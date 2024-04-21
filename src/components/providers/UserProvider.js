@@ -25,21 +25,21 @@ function UserProvider(props) {
 
   const userRegister = (requestData)=>{
     axios.post(SERVER_URL+"users/signup",requestData)
-            .then(response=>{
-                if(response.data.response){
-                  openNotification(t('Success'),t("Account successfully created!"),true,goWalletMain)
-                  localStorage.setItem("userInfo", JSON.stringify(response.data.data.userInfo));
-                  localStorage.setItem("jwtToken", JSON.stringify(response.data.data.token));
+      .then(response=>{
+        if(response.data.response){
+          openNotification(t('Success'),t("Account successfully created!"),true,goWalletMain)
+          localStorage.setItem("userInfo", JSON.stringify(response.data.data.userInfo));
+          localStorage.setItem("jwtToken", JSON.stringify(response.data.data.token));
 
-                 if(response.data.data.keyPair){
-                    localStorage.setItem("privateKey",wallet.decrypt(response.data.data.keyPair[0].privateKey));
-                    localStorage.setItem("publicKey",JSON.stringify(response.data.data.keyPair[0].publicKey));
-                  }
-                } 
-                else{
-                  openNotification(t('Fail!'),response.data.message,false,null)
-                }
-              })
+          if(response.data.data.keyPair){
+            localStorage.setItem("privateKey",wallet.decrypt(response.data.data.keyPair[0].privateKey));
+            localStorage.setItem("publicKey",JSON.stringify(response.data.data.keyPair[0].publicKey));
+          }
+        } 
+        else{
+          openNotification(t('Fail!'),response.data.message,false,null)
+        }
+    })
   }
   const sendEmail=(requestData)=>{
     return axios.post(SERVER_URL+"users/emailverify",requestData)
@@ -55,30 +55,29 @@ function UserProvider(props) {
   }
   const login = (requestData)=>{
     axios.post(SERVER_URL+"users/login",requestData)
-          .then(response=>{
-            if(response.data.response){  
-              localStorage.setItem("userInfo", JSON.stringify(response.data.data.userInfo));
-              localStorage.setItem("jwtToken", JSON.stringify(response.data.data.token));
-              console.log(response.data.data)
-              if(response.data.data.keyPair){
-                localStorage.setItem("privateKey",wallet.decrypt(response.data.data.keyPair[0].privateKey));
-                localStorage.setItem("publicKey",response.data.data.keyPair[0].publicKey);
-              }
-              openNotification(t('Successful'),t('Welcome to our site.'), true,goMain);
-              setAuthToken(response.data.data.token);
-            }
-            else{
-              openNotification(t('Login Failed'),response.data.message,false,null);
-            }
-            
-          })
+      .then(response=>{
+        if(response.data.response){  
+          localStorage.setItem("userInfo", JSON.stringify(response.data.data.userInfo));
+          localStorage.setItem("jwtToken", JSON.stringify(response.data.data.token));
+          console.log(response.data.data)
+          if(response.data.data.keyPair){
+            localStorage.setItem("privateKey",wallet.decrypt(response.data.data.keyPair[0].privateKey));
+            localStorage.setItem("publicKey",response.data.data.keyPair[0].publicKey);
+          }
+          openNotification(t('Successful'),t('Welcome to our site.'), true,goMain);
+          setAuthToken(response.data.data.token);
+        }
+        else{
+          openNotification(t('Login Failed'),response.data.message,false,null);
+        }
         
+      })  
   }
   const goWalletMain=()=>{
-      window.location.href="/walletMain";
+    window.location.href="/walletMain";
   }
   const goMain=()=>{
-      window.location.href="/";
+    window.location.href="/";
   }
 
   useEffect(()=>{

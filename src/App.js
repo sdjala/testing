@@ -1,5 +1,4 @@
-import { Button } from 'antd';
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import Home from './components/pages/Home.js';
 import Register from './components/pages/Register.js';

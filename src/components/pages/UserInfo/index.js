@@ -4,6 +4,7 @@ import Nav from "../../component/Nav";
 import UserInfoTable from "../../component/UserInfoTable";
 import UserInfoList from '../../component/UserInfoList';
 import avatarImage from '../../../assets/image/avatar.png';
+import { ConnectWallet } from "../../component/ConnectWallet";
 
 function UserInfo() {
     const [submenu,setSubmenu]=useState(false);
@@ -27,6 +28,7 @@ function UserInfo() {
                             <span className="text-sm">Verified User</span>
                         </div>
                     </div>
+                    <ConnectWallet />
                     <div className="full my-2 lg:w-4/12 flex justify-between">
                         <div className="">Email</div>
                         <div className="">SMS ID</div>

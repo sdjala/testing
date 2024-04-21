@@ -46,7 +46,6 @@ function Wallet() {
   const serverUrl =SERVER_URL;
   let frequent;
 
-
   useEffect(()=>{
     if(id)
       setIdx(parseInt(id));
@@ -59,6 +58,7 @@ function Wallet() {
       clearInterval(frequent);
     }
   },[])
+
   useEffect(async()=>{
     if(id && presaleToken && chainId){
       let findNetwork = networks.filter(item=>item.chainId===chainId);

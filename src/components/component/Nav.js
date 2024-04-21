@@ -99,7 +99,7 @@ function Nav(props) {
   );
   const profile = (
     <div className="rounded-xl p-4  flex flex-col bg-white flex-wrap shadow">
-        <Link to="/wallet/4">{t('Profile')}</Link>
+        <Link to="/userInfo">{t('Profile')}</Link>
         <Link to="/" onClick={logout}>{t('Log out')}</Link>
 
       

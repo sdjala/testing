@@ -5,13 +5,16 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import UserProvider from './components/providers/UserProvider';
 import PresaleProvider from './components/providers/PresaleProvider';
-import WalletProvider from './components/providers/WalletProvider';
+import { ThirdwebProvider } from "@thirdweb-dev/react";
+const desiredChainId = 80001;
 
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
       <PresaleProvider>
-        <App />
+        <ThirdwebProvider desiredChainId={desiredChainId}>
+          <App />
+        </ThirdwebProvider>
       </PresaleProvider>
     </UserProvider>
   </React.StrictMode>,

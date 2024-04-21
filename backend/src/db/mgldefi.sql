@@ -161,15 +161,16 @@ CREATE TABLE `user` (
   `password` varchar(100) NOT NULL,
   `country` varchar(30) NOT NULL,
   `invite_code` int(11) NOT NULL,
-  `role` varchar(10) NOT NULL
+  `role` varchar(10) NOT NULL,
+  `get_bnb` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `password`, `country`, `invite_code`, `role`) VALUES
-(1, 'info@mglcoin.io', '$2a$08$0jDkU2V337gMOONHZgX0OepzgQZLzIYDVv4o64.4nwY2VolH.hip.', 'Taiwan', 0, 'Super');
+INSERT INTO `user` (`id`, `email`, `password`, `country`, `invite_code`, `role`, `get_bnb`) VALUES
+(1, 'info@mglcoin.io', '$2a$08$0jDkU2V337gMOONHZgX0OepzgQZLzIYDVv4o64.4nwY2VolH.hip.', 'Taiwan', 0, 'Super', 0);
 
 -- --------------------------------------------------------
 
